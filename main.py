@@ -8,12 +8,12 @@ def translate(w):
   w = w.lower()
   if w in data:
     return data[w]
-  elif w.upper() in data:
+  elif w.upper() in data: # for capitalized words like USA and Nato
     return data[w.upper()]
-  elif w.title() in data:
+  elif w.title() in data: # for words that start with a capital letter
     return data[w.title()]
 
-  close_words = difflib.get_close_matches(w, data, cutoff=0.7)
+  close_words = difflib.get_close_matches(w, data, cutoff=0.7) # A list of a word's close matches, if any
 
   if len(close_words) > 0:
     yn = input("Did you mean: {}? Y/N: ".format(close_words[0]))
